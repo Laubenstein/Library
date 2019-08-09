@@ -20,10 +20,11 @@ addBook("The Lord of the Rings", "J.R.R. Tolkien", 1234, false);
 addBook("1984", "George Orwell", 234, false);
 addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 
+// Main rendering for the table, should update when new books are added
 function render() {
   fillTable();
 }
-
+// Dynamically pushes all Books into the table
 function fillTable() {
   my_library.forEach(function (e) {
     const values = Object.values(e);
@@ -38,6 +39,17 @@ function fillTable() {
     pagesCell.innerHTML = `${values[2]}`;
     statusCell.innerHTML = `${values[3]}`;
   })
+}
+
+// Open "Add Book" modal
+let addModal = document.getElementById('addModal');
+let addButton = document.getElementById('addButton');
+let cancelButton = document.getElementById('cancelButton');
+addButton.onclick = function() {
+  addModal.style.display = "block";
+}
+cancelButton.onclick = function() {
+  addModal.style.display = "none";
 }
 
 

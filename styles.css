@@ -31,3 +31,9 @@ button {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+#addModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  
+}
