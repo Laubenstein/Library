@@ -1,5 +1,6 @@
 # Library
 A small Library app.
+
 This is an Assignment from [The Odin Project] (https://www.theodinproject.com/courses/javascript/lessons/library)
 
 ## Requirements
