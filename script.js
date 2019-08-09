@@ -1,6 +1,7 @@
 const container = document.querySelector("#container");
 let my_library = [];
-let createDiv;
+let createRow;
+let tableData;
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -14,20 +15,32 @@ function addBook(title, author, pages, read) {
   my_library.push(newBook);
 }
 
-addBook("LOTR", "J.R.R. Tolkien", 1234, false);
+// Just for testing
+addBook("The Lord of the Rings", "J.R.R. Tolkien", 1234, false);
 addBook("1984", "George Orwell", 234, false);
 addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 
 function render() {
+  fillTable();
+}
+
+function fillTable() {
   my_library.forEach(function (e) {
-    createDiv = document.createElement("p");
-    createDiv.textContent = `Title: ${e.title}, Author: ${e.author}, Pages: ${e.pages}, read: ${e.read}`;
-    createDiv.classList.add("bookPara");
-    container.appendChild(createDiv);
+    const values = Object.values(e);
+    let table = document.getElementById("table");
+    let row = table.insertRow(-1);
+    let titleCell = row.insertCell(0);
+    let authorCell = row.insertCell(1);
+    let pagesCell = row.insertCell(2);
+    let statusCell = row.insertCell(3);
+    titleCell.innerHTML = `${values[0]}`;
+    authorCell.innerHTML = `${values[1]}`;
+    pagesCell.innerHTML = `${values[2]}`;
+    statusCell.innerHTML = `${values[3]}`;
   })
 }
 
-let addButton = document.createElement("button");
-container.appendChild(addButton);
+
+
 render();
 console.log(my_library);
