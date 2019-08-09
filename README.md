@@ -1,7 +1,7 @@
 # Library
 A small Library app.
 
-This is an Assignment from [The Odin Project] (https://www.theodinproject.com/courses/javascript/lessons/library)
+This is an Assignment from [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
 
 ## Requirements
 - [x] Set up your Project with skeleton HTML/CSS and JS files
