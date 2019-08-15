@@ -22,6 +22,7 @@ addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 
 // Main rendering for the table, should clear old values and put in all Books from library
 function render() {
+  //clearTable();
   fillTable();
 }
 
