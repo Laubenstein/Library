@@ -52,6 +52,15 @@ cancelButton.onclick = function() {
   addModal.style.display = "none";
 }
 
+// Push new Book to Library
+let titleInput = document.getElementById('titleInput');
+let authorInput = document.getElementById('authorInput');
+let pagesInput = document.getElementById('pagesInput');
+let submitButton = document.getElementById('submitButton');
+submitButton.onclick = function() {
+  addBook(titleInput.value, authorInput.value, pagesInput.value, false);
+  render();
+}
 
 
 render();
