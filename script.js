@@ -54,6 +54,7 @@ cancelButton.onclick = function() {
 }
 
 // Push new Book to Library, update table
+// Implement function to clear the input field afterwards!
 let titleInput = document.getElementById('titleInput');
 let authorInput = document.getElementById('authorInput');
 let pagesInput = document.getElementById('pagesInput');
