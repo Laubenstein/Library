@@ -20,13 +20,15 @@ addBook("The Lord of the Rings", "J.R.R. Tolkien", 1234, false);
 addBook("1984", "George Orwell", 234, false);
 addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 
-// Main rendering for the table, should clear old values and put in all Books from library
+// Main rendering for the table 
+// clears old values and puts in all Books from library
 function render() {
-  //clearTable();
+  clearTable();
   fillTable();
 }
 
 // Dynamically pushes all Books into the table
+// Check for empty inputs!
 function fillTable() {
   my_library.forEach(function (e) {
     const values = Object.values(e);
@@ -43,6 +45,15 @@ function fillTable() {
   })
 }
 
+// Clears the table, but not the Heading
+function clearTable () {
+  let table = document.getElementById('table');
+  while (table.rows.length > 1 ) {
+    table.deleteRow(-1);
+  }
+}
+
+
 // Open "Add Book" modal
 let addModal = document.getElementById('addModal');
 let addButton = document.getElementById('addButton');
@@ -55,7 +66,6 @@ cancelButton.onclick = function() {
 }
 
 // Push new Book to Library, update table
-// Implement function to clear the input field afterwards!
 let titleInput = document.getElementById('titleInput');
 let authorInput = document.getElementById('authorInput');
 let pagesInput = document.getElementById('pagesInput');
