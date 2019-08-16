@@ -9,4 +9,4 @@ This is an Assignment from [The Odin Project](https://www.theodinproject.com/cou
 - [ ] Add a button that brings up a form allowing users to add new books
 - [ ] Add a button on each book's display to remove the book from the Library
 - [ ] Add a button on each book's display to change it's read status
-- [ ] OPTIONAL - Store th data somewhere
+- [ ] OPTIONAL - Store the data somewhere
