@@ -10,9 +10,16 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Create Book and push to Library
 function addBook(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read);
   my_library.push(newBook);
+}
+
+// Delete Book from Library
+function deleteBook() {
+  my_library.splice(i, 1);
+  render();
 }
 
 // Just for testing
@@ -65,13 +72,27 @@ cancelButton.onclick = function() {
   addModal.style.display = "none";
 }
 
-// Push new Book to Library, update table
+
 let titleInput = document.getElementById('titleInput');
 let authorInput = document.getElementById('authorInput');
 let pagesInput = document.getElementById('pagesInput');
 let submitButton = document.getElementById('submitButton');
+let readRadio = document.getElementById('readRadio');
+let unreadRadio = document.getElementById('unreadRadio');
+// Check radio buttons
+function radioCheck() {
+  if (readRadio.checked) {
+    return true;
+   } else {
+    return false; 
+  }
+}
+// Push new Book to Library, update table
 submitButton.onclick = function() {
-  addBook(titleInput.value, authorInput.value, pagesInput.value, false);
+  addBook(titleInput.value, authorInput.value, pagesInput.value, radioCheck());
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
   render();
 }
 
