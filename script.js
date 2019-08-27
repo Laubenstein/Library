@@ -35,6 +35,7 @@ function render() {
 }
 
 // Dynamically pushes all Books into the table
+// Better use my_library.forEach((book)=>book.title...)
 // Check for empty inputs!
 function fillTable() {
   my_library.forEach(function (e) {
