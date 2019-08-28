@@ -16,42 +16,20 @@ function addBook(title, author, pages, read) {
   my_library.push(newBook);
 }
 
-// Delete Book from Library
-/*  myLibrary.forEach(element => {
-    let newRow = document.createElement('tr');
-    newRow.setAttribute('class', 'book_' + myLibrary.indexOf(element));
-*/
-
-
-
-/* 
-function addRemoveButton() {
-  let amount = myLibrary.length;
-
-  for (let i = 0; i < amount; i++) {
-    let tableRow = document.querySelector('.book_' + i);
-    let makeTD = document.createElement('td');
-    let deleteButton = document.createElement('button');
-    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-    deleteButton.value = 'Remove';
-    deleteButton.addEventListener('click', () => deleteBook(tableRow));
-    makeTD.appendChild(deleteButton);
-    tableRow.appendChild(makeTD);
-  }
-}
-
 function deleteBook(element) {
-  let bookIndex = element.className.slice(5, 6);
+  let bookIndex = element.className.slice(7, 8);
 
-  myLibrary.splice(bookIndex, 1);
+  my_library.splice(bookIndex, 1);
   clearTable();
   render();
 }
-*/
+
+/*
+// Delete Book from Library
 function deleteBook() {
   my_library.splice(i, 1);
   render();
-}
+}*/
 
 // Just for testing
 addBook("The Lord of the Rings", "J.R.R. Tolkien", 1234, false);
@@ -63,16 +41,17 @@ addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 function render() {
   clearTable();
   fillTable();
+  addRemoveButton();
 }
 
 // Dynamically pushes all Books into the table
-// Better use my_library.forEach((book)=>book.title...)
 // Check for empty inputs!
 function fillTable() {
   my_library.forEach(function (e) {
     const values = Object.values(e);
     let table = document.getElementById("table");
-    let row = table.insertRow(-1);
+    let row = document.createElement('tr');
+    row.setAttribute('class', 'bookNum' + my_library.indexOf(e));
     let titleCell = row.insertCell(0);
     let authorCell = row.insertCell(1);
     let pagesCell = row.insertCell(2);
@@ -81,8 +60,24 @@ function fillTable() {
     authorCell.innerHTML = `${values[1]}`;
     pagesCell.innerHTML = `${values[2]}`;
     statusCell.innerHTML = `${values[3]}`;
+    table.appendChild(row);
   })
 }
+
+function addRemoveButton() {
+
+  for (let i = 0; i < my_library.length; i++) {
+    let row = document.querySelector('.bookNum' + i);
+    let data = row.insertCell(4);
+    let deleteButton = document.createElement('button');
+    deleteButton.setAttribute('class', 'deleteButton');
+    deleteButton.innerHTML = 'Remove';
+    deleteButton.addEventListener('click', () => deleteBook(row));
+    data.appendChild(deleteButton);
+   
+  }
+}
+
 
 // Clears the table, but not the Heading
 function clearTable () {
