@@ -17,6 +17,37 @@ function addBook(title, author, pages, read) {
 }
 
 // Delete Book from Library
+/*  myLibrary.forEach(element => {
+    let newRow = document.createElement('tr');
+    newRow.setAttribute('class', 'book_' + myLibrary.indexOf(element));
+*/
+
+
+
+/* 
+function addRemoveButton() {
+  let amount = myLibrary.length;
+
+  for (let i = 0; i < amount; i++) {
+    let tableRow = document.querySelector('.book_' + i);
+    let makeTD = document.createElement('td');
+    let deleteButton = document.createElement('button');
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+    deleteButton.value = 'Remove';
+    deleteButton.addEventListener('click', () => deleteBook(tableRow));
+    makeTD.appendChild(deleteButton);
+    tableRow.appendChild(makeTD);
+  }
+}
+
+function deleteBook(element) {
+  let bookIndex = element.className.slice(5, 6);
+
+  myLibrary.splice(bookIndex, 1);
+  clearTable();
+  render();
+}
+*/
 function deleteBook() {
   my_library.splice(i, 1);
   render();
