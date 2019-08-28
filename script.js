@@ -100,14 +100,13 @@ cancelButton.onclick = function() {
 }
 
 
-let titleInput = document.getElementById('titleInput');
-let authorInput = document.getElementById('authorInput');
-let pagesInput = document.getElementById('pagesInput');
-let submitButton = document.getElementById('submitButton');
-let readRadio = document.getElementById('readRadio');
-let unreadRadio = document.getElementById('unreadRadio');
+
+
+
+
 // Check radio buttons
 function radioCheck() {
+  let readRadio = document.getElementById('readRadio');
   if (readRadio.checked) {
     return true;
    } else {
@@ -115,7 +114,11 @@ function radioCheck() {
   }
 }
 // Push new Book to Library, update table
+let submitButton = document.getElementById('submitButton');
 submitButton.onclick = function() {
+  let titleInput = document.getElementById('titleInput');
+  let authorInput = document.getElementById('authorInput');
+  let pagesInput = document.getElementById('pagesInput');
   addBook(titleInput.value, authorInput.value, pagesInput.value, radioCheck());
   titleInput.value = "";
   authorInput.value = "";
