@@ -8,5 +8,5 @@ This is an Assignment from [The Odin Project](https://www.theodinproject.com/cou
 - [x] Add a render() function that displays each book on the page
 - [X] Add a button that brings up a form allowing users to add new books
 - [X] Add a button on each book's display to remove the book from the Library
-- [ ] Add a button on each book's display to change it's read status
+- [ ] Add a button on each book's display to change its read status
 - [ ] OPTIONAL - Store the data somewhere

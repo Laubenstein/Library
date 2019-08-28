@@ -1,7 +1,5 @@
 const container = document.querySelector("#container");
 let my_library = [];
-let createRow;
-let tableData;
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -16,22 +14,26 @@ function addBook(title, author, pages, read) {
   my_library.push(newBook);
 }
 
+function updateBook(element) {
+  let bookIndex = element.className.slice(7,8);
+  let readStatus = my_library[bookIndex].read;
+  if (readStatus) {
+    my_library[bookIndex].read = false;
+  } else {
+    my_library[bookIndex].read = true;
+  }
+  console.log(my_library[bookIndex].read);
+  render();
+}
+
 function deleteBook(element) {
   let bookIndex = element.className.slice(7, 8);
-
   my_library.splice(bookIndex, 1);
   clearTable();
   render();
 }
 
-/*
-// Delete Book from Library
-function deleteBook() {
-  my_library.splice(i, 1);
-  render();
-}*/
-
-// Just for testing
+// Just some dummys to fill the table
 addBook("The Lord of the Rings", "J.R.R. Tolkien", 1234, false);
 addBook("1984", "George Orwell", 234, false);
 addBook("The Man in the High castle", "Philip K. Dick", 345, true);
@@ -41,6 +43,7 @@ addBook("The Man in the High castle", "Philip K. Dick", 345, true);
 function render() {
   clearTable();
   fillTable();
+  addUpdateButton();
   addRemoveButton();
 }
 
@@ -55,20 +58,35 @@ function fillTable() {
     let titleCell = row.insertCell(0);
     let authorCell = row.insertCell(1);
     let pagesCell = row.insertCell(2);
-    let statusCell = row.insertCell(3);
     titleCell.innerHTML = `${values[0]}`;
     authorCell.innerHTML = `${values[1]}`;
     pagesCell.innerHTML = `${values[2]}`;
-    statusCell.innerHTML = `${values[3]}`;
     table.appendChild(row);
   })
 }
 
+function addUpdateButton() {
+
+  for (let i = 0; i < my_library.length; i++) {
+    let row = document.querySelector('.bookNum' + i);
+    let data = row.insertCell(-1);
+    let updateButton = document.createElement('button');
+    let readStatus = Object.values(my_library[i])[3];
+    updateButton.setAttribute('class', 'updateButton');
+    if (readStatus === false) {
+      updateButton.innerHTML = 'Unread';
+    } else {
+      updateButton.innerHTML = 'Read';
+    }
+    updateButton.addEventListener('click', () => updateBook(row));
+    data.appendChild(updateButton);
+  }
+}
 function addRemoveButton() {
 
   for (let i = 0; i < my_library.length; i++) {
     let row = document.querySelector('.bookNum' + i);
-    let data = row.insertCell(4);
+    let data = row.insertCell(-1);
     let deleteButton = document.createElement('button');
     deleteButton.setAttribute('class', 'deleteButton');
     deleteButton.innerHTML = 'Remove';
@@ -77,6 +95,7 @@ function addRemoveButton() {
    
   }
 }
+
 
 
 // Clears the table, but not the Heading
@@ -98,11 +117,6 @@ addButton.onclick = function() {
 cancelButton.onclick = function() {
   addModal.style.display = "none";
 }
-
-
-
-
-
 
 // Check radio buttons
 function radioCheck() {
